@@ -1,0 +1,40 @@
+import { Heart } from "lucide-react";
+
+const FloatingHearts = () => {
+  return (
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+      {/* Background floating hearts */}
+      {[...Array(12)].map((_, i) => (
+        <Heart
+          key={i}
+          className={`absolute text-romantic/20 animate-float`}
+          size={20 + (i % 3) * 8}
+          style={{
+            left: `${10 + (i * 8) % 80}%`,
+            top: `${10 + (i * 12) % 70}%`,
+            animationDelay: `${i * 0.5}s`,
+            animationDuration: `${6 + (i % 3)}s`,
+          }}
+          fill="currentColor"
+        />
+      ))}
+      
+      {/* Accent hearts */}
+      {[...Array(6)].map((_, i) => (
+        <Heart
+          key={`accent-${i}`}
+          className={`absolute text-celebration/30 animate-pulse-soft`}
+          size={12 + (i % 2) * 6}
+          style={{
+            right: `${5 + (i * 15) % 60}%`,
+            bottom: `${10 + (i * 20) % 50}%`,
+            animationDelay: `${i * 1.2}s`,
+          }}
+          fill="currentColor"
+        />
+      ))}
+    </div>
+  );
+};
+
+export default FloatingHearts;
